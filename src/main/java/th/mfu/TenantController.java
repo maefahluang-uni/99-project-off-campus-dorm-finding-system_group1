@@ -83,6 +83,8 @@ public class TenantController {
                 return "Login";
             }
             System.out.println(referer);
+            if(referer==null)
+                return "redirect:/home";
             return "redirect:"+referer;
         }catch(NoSuchElementException e)
         {
