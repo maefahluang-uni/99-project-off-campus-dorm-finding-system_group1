@@ -45,6 +45,3 @@ INSERT INTO Tenant (email, firstName, lastName, gender, phone, password)
 VALUES
     ('admin@comfynest.com', 'admin', 'admin', 'Male', '+999999999', '$2a$10$E7mzNVJGhWXTQa4MctswUOfH4nItgL1gYOCYd0cGFJyQdVWFMW6he'); -- Password is "adminmfu"
 
-INSERT INTO WishList(tenant_email, dormitory_id)
-VALUES
-    ('admin@comfynest.com',1);
