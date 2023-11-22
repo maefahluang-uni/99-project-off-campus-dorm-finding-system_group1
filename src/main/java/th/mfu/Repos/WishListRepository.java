@@ -8,7 +8,7 @@ import th.mfu.domain.WishList;
 import java.util.List;
 
 
-public interface WishListRepository extends CrudRepository<WishList, String> {
+public interface WishListRepository extends CrudRepository<WishList, Integer> {
     List<WishList> findByTenant(Tenant tenant);
     void deleteByDormitory(Dormitory dormitory);
     List<WishList> findByDormitoryAndTenant(Dormitory dormitory, Tenant tenant);

@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 public class WishList {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private int id;
 
     @ManyToOne
     private Tenant tenant;
