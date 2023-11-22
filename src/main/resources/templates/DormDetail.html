@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dormitory Detail | ComfyNest</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC114XyL0GSnmNGqL_iBIDt-Zzj7IzgszQ&libraries=places"></script>
+    <link rel="stylesheet" href="/static/css/DormDetail.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
+<body th:object="${dorm}">
+    <section>
+        <span class="overlay"></span>
+        <span class="overlay1"></span>
+
+        <div class="pop">
+        <h2>How would you recommend this dormitory to others?</h2>
+        <form th:action="@{/rate}" method="post">
+            <input type="hidden" name="ratingId" th:value="${dorm.getRating.getId()}">
+            <input type="hidden" name="dormId" th:value="${dorm.getId()}">
+        <div class="star" th:with="star=1">
+            
+            <label for="radio" class="star-label"><i class="fa-solid fa-star"></i></label>
+            <input type="radio" class="star-radio" name="rating" id="radio"  value = "1">
+
+            <label for="radio2" class="star-label"><i class="fa-solid fa-star"></i></label>
+            <input type="radio" class="star-radio" name="rating" id="radio2" value = "2">
+
+            <label for="radio3" class="star-label"><i class="fa-solid fa-star"></i></label>
+            <input type="radio" class="star-radio" name="rating" id="radio3" value = "3">
+
+            <label for="radio4" class="star-label"><i class="fa-solid fa-star"></i></label>
+            <input type="radio" class="star-radio" name="rating" id="radio4" value = "4">
+
+            <label for="radio5" class="star-label"><i class="fa-solid fa-star"></i></label>
+            <input type="radio" class="star-radio" name="rating" id="radio5" value = "5">
+            
+        </div>
+
+        <div class="btns">
+            <button class="cancel" type="button">Cancel</button>
+            <button type="submit" class="submit">Submit</button>
+        </div>
+        </form>
+    </div>
+
+    <div class="pop1">
+        <div class="question">
+            <img src="/static/images/Confirm.png" alt="">
+        </div>
+        <h2>Are you sure you want to book this dormitory?</h2>
+
+        <div class="btns">
+            <button class="cancel1">Cancel</button>
+            <button class="booking">Book</button>
+        </div>
+    </div>
+
+    <div class="back">
+        <a href="/homepage">
+            <i class='bx bx-left-arrow-circle'></i>
+        </a>
+    </div>
+
+    <div class="container" >
+        <div class="images">
+            <div class="one">
+                <div class="first">
+                    <img th:src="@{/static/images/{fileName}(fileName=${dorm.img1})}" alt="">
+                </div>
+                <div class="second">
+                    <img th:src="@{/static/images/{fileName}(fileName=${dorm.img2})}" alt="">
+                </div>
+            </div>
+            <div class="two">
+                <div class="first">
+                    <img th:src="@{/static/images/{fileName}(fileName=${dorm.img3})}" alt="">
+                </div>
+                <div class="second">
+                    <img th:src="@{/static/images/{fileName}(fileName=${dorm.img4})}" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="info">
+            <div class="header">
+                <div class="name">
+                    <h2 th:text="${dorm.name}"></h2>
+                </div>
+                <div class="rating"  th:with="maxStars=5, fullStars=${#numbers.sequence(1, rating)}">
+                    <div class="stars">
+                        <span th:if="${rating>0}" th:each="star : ${fullStars}" class="star"><i class="fa-solid fa-star"></i></span>
+                        <span th:unless="${rating>=5}">
+                            <span th:each="star : ${#numbers.sequence(rating + 1, maxStars)}"><i class="fa-regular fa-star"></i></span>
+                        </span>
+                    </div>
+                    <span th:if="${dorm.fullyBooked==true}" class="aval">
+                        Full
+                    </span>
+                    <span th:if="${dorm.fullyBooked== false }" class="aval">
+                        Available
+                    </span  >
+                </div>
+            </div>
+            <div class="detail">
+                <div class="list">
+                    <ul class="row">
+                        <li><i class='bx bx-money'></i> ฿ <span th:text="${dorm.price}"></span>/month</li>
+                        <li><i class='bx bx-male-female'></i><span th:text="${dorm.gender}"></span></li>
+                        <li><i class='bx bxs-map'></i><span th:text="${dorm.city}"> Lorem, ipsum dolor sit amet consectetur adipisicing elit</span></li>
+                        <li><i class='bx bxs-phone'></i><span th:text="${phone}">0123456789</span></li>
+                        <li><i class='bx bxs-envelope'></i><span th:text="${dorm.email}"></span></li>
+                    </ul>
+                </div>
+                <div class="text">
+                    <div class="api" th:attr="data-lat=${dorm.lat}, data-lng=${dorm.lng}, data-location=${dorm.name}" id="map"></div><br>
+                    <div class="row" >
+                        <h6>Description</h6>
+                        <span th:text="${dorm.description}"></span>
+                    </div><br>
+                    <div class="row">
+                        <h6>Amenties</h6>
+                        <span th:text="${dorm.Amenties}"></span>
+                    </div><br>
+                    <div class="row">
+                        <h6>Rules</h6>
+                        <span th:text="${dorm.rules}"></span>
+                    </div>
+                </div>
+            </div><br>
+            <div class="btns">
+                <div th:if="${isWished}" class="but">
+                    <a th:href="@{'/remove/'+${dorm.id}}"><button class="wish" >Remove from Wishlist</button></a>
+                    <button class="wish" id="rate">Rate This Dormitory  <i class="fa-solid fa-star"></i></button>
+                </div>
+                <div th:if="${isWished==false}" class="but">
+                    <a th:href="@{'/add/'+${dorm.id}}"><button class="wish" >Add to Wishlist</button></a>
+                    <button class="wish" id="rate">Rate This Dormitory  <i class="fa-solid fa-star"></i></button>
+                </div>
+                <div class="ton">
+                    <button class="book" id="btn">Book</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        document.addEventListener('DOMContentLoaded', function () {
+            // Retrieve latitude and longitude from data attributes
+            var latitude = parseFloat(/*[[${dorm.lat}]]*/);
+            var longitude = parseFloat(/*[[${dorm.lng}]]*/);
+            var location = /*[[${dorm.name}]]*/ 'Dorm location';
+
+            // Create a map centered at the specified location
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: latitude, lng: longitude },
+                zoom: 17
+            });
+            var marker = new google.maps.Marker({
+                position: { lat: latitude, lng: longitude },
+                map: map,
+                title: location
+            });
+            
+        });
+        /*]]>*/
+    </script>
+    <script src="/static/js/overlay.js" defer></script>
+   
+</body>
+
+</html>
