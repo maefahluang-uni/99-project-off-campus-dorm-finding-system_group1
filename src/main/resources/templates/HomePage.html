@@ -37,31 +37,15 @@
 </div>
 </div>
 <div class="body">
-<!-- <div class="searchbar">
-<div class="bar">
-<input type="search" name="" id="" placeholder="Dormotory's name">
-<i class="fa-solid fa-magnifying-glass searchbtn"></i>
-</div>
-<div style="margin-bottom: 30px;">
-<div class="title" align="center" style="font-size: 20px; color: #6f4518;">Search By City</div>
-</div>
-<div class="city">
-<div class="btns">
-<button>Chiang Rai</button>
-<button>Chiang Mai</button>
-<button>Bangkok</button>
-<button>Phuket</button>
-<button>Salaya</button>
-<button>Pattaya</button>
-<button>Hat Yai</button>
-</div>
-</div>
-</div> -->
+
 <div class="searchbar">
 <form th:action="@{/search}" method="post" class="bar" id="searchForm">
-<input type="text" name="dormitoryName" placeholder="Dormitory's name" autocomplete="off">
-<input type="submit" value="Search" class="searchbtn">
-<!-- <i class="fa-solid fa-magnifying-glass searchbtn" ></i> -->
+    
+        <input type="text" name="dormitoryName" placeholder="Dormitory's name" autocomplete="off">
+        <input type="submit" value="Search" class="searchbtn">
+    
+
+
 </form>
 <div style="margin-bottom: 30px;">
 <div class="title" align="center" style="font-size: 20px; color: #6f4518;">Search By City</div>
@@ -74,7 +58,7 @@
 </div>
 </div>
 <div class="dorms" th:each="dorm : ${dormList}">
-<div class="cover" style="padding: 30px 0px 0px 0px; display: flex; flex-direction: column; justify-content:center; align-items: center;">
+
 <div class="stk">
 <div class="image">
 <img th:src="@{'/static/images/'+${dorm.img1}}" alt="">
@@ -83,7 +67,7 @@
 <div class="dormName">
 <div class="name">
 <h3 style="font-weight: 300; font-size: 22px;" th:text="${dorm.name}">STK Resort</h3>
-<a th:href="@{'/addfav'+${dorm.id}}"><i id="heartIcon" class='bx bx-heart show-hide' ></i></a>
+<!-- <a th:href="@{'/addfav'+${dorm.id}}"><i id="heartIcon" class='bx bx-heart show-hide' ></i></a> -->
 </div>
 <div class="rating"  th:with="maxStars=5,rating=${dorm.rating.calcRating()}, fullStars=${#numbers.sequence(1, rating)}">
     <div class="stars">
@@ -94,20 +78,23 @@
         
         
     </div>
+    <div class="aval">
+        <span th:if="${dorm.fullyBooked==true}" class="aval">
+            Full
+        </span>
+        <span th:if="${dorm.fullyBooked== false }" class="aval">
+            Available
+        </span  >
+    </div>
+    
+<!-- <div class="aval">
     <span th:if="${dorm.fullyBooked}" class="aval">
         Full
     </span>
     <span th:if="${dorm.fullyBooked= false }" class="aval">
         Available
     </span  >
-<div class="aval">
-    <span th:if="${dorm.fullyBooked}" class="aval">
-        Full
-    </span>
-    <span th:if="${dorm.fullyBooked= false }" class="aval">
-        Available
-    </span  >
-</div>
+</div> -->
 </div>
 </div>
 <div class="detail">
@@ -126,7 +113,7 @@
 </div>
 </div>
 
-</div>
+
 </div>
 <div class="footer">
     <div class="contact">
