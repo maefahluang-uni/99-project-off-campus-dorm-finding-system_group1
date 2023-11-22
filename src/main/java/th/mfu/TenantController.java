@@ -160,8 +160,8 @@ public class TenantController {
             Cookie cookie = new Cookie("email", email);
             cookie.setPath("/");
             cookie.setMaxAge(24*3600);
-                    response.addCookie(cookie);
-            isLogged.put(cookieValue, true);
+            response.addCookie(cookie);
+            isLogged.put(email, true);
             return "redirect:/homepage";
         }
     }
