@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>WishList | ComfyNest</title>
+   <link rel="stylesheet" href="/static/css/WishList.css">
+   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+   <abbr title="#">
+       <div class="back">
+        <!-- still need to wire back -->
+           <a href="/homepage">
+               <i class='bx bx-left-arrow-circle'></i>
+           </a>
+       </div>
+   </abbr>
+   <div class="container">
+       <table>
+           <thead>
+               <tr>
+                   <th colspan="2">My WishList</th>
+               </tr>
+           </thead>
+           <tbody>
+               
+               <tr th:each="dorm : ${dormList}">
+                   <td class="row">
+                       <div class="name" th:text="${dorm.name}">
+                       </div>
+                       <div class="btn">
+                            <a th:href="@{'/remove/' + ${dorm.id}}"><i class='bx bx-trash'></i></a>
+                            <a th:href="@{'/dorm/' + ${dorm.id}}"><button type="button" class="see">See More</button></a>
+                            <a href="#"><button type="button" class="book">Book</button></a>
+                       </div>
+                   </td>
+               </tr>
+               
+           </tbody >
+       </table >
+       
+   </div>
+</body>
+</html>
+
