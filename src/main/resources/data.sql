@@ -34,7 +34,7 @@ INSERT INTO DORMITORY (
 
  (7,7, 'Phuket Apartment', 'Phuket', 'Phuket', 3000, 'Unisex', false, 'Here are some descriptions about the Phuket Dormiotory. This is a group project for the web development course, software specification and analysis and database system.', 'Here are some rules. Yayyy hahaha freedom bacon.', 'We provide these amenities. blah blah blah.', 'Natthicha1.JPG', 'Natthicha2.JPG', 'Natthicha3.jpg', 'Natthicha4.JPG', 'phuketapartment@gmail.com', 'landlord2@example.com',7.88776502753229, 98.3773034517855),
 
- (8,8, 'STK Resort', 'Chiang Rai', 'Mueang Chiang Rai', 3000, 'Unisex', false, 'Here are some descriptions about the STK Dormiotory. This is a group project for the web development course, software specification and analysis and database system.', 'Here are some rules. Yayyy hahaha freedom bacon.', 'We provide these amenities. blah blah blah.', 'STK1.jpg', 'STK2.jpg', 'STK3.jpg', 'STK4.jpg', 'stkdormitory@gmail.com', 'landlord1@example.com', 20.04467581829367, 99.87976215317447);
+ (8,8, 'STK Resort', 'Chiang Rai', 'Mueang Chiang Rai', 3000, 'Unisex', false, 'Here are some descriptions about the STK Dormiotory. This is a group project for the web development course, software specification and analysis and database system.', 'Here are some rules. Yayyy hahaha freedom bacon.', 'We provide these amenities. blah blah blah.', 'STK1.JPG', 'STK2.JPG', 'STK3.JPG', 'STK4.JPG', 'stkdormitory@gmail.com', 'landlord1@example.com', 20.04467581829367, 99.87976215317447);
 
 
 -- Insert sample data into RATING table
