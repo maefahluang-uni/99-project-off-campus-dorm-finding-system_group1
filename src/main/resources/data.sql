@@ -17,7 +17,7 @@ INSERT INTO RATING (id,oneCount, twoCount, threeCount, fourCount, fiveCount, zer
 
 -- Insert sample data into DORMITORY table
 INSERT INTO DORMITORY (
-    id,rating_id, name, city, province, price, gender, fullyBooked, description, rules, AmentiJPG
+    id,rating_id, name, city, province, price, gender, fullyBooked, description, rules, Amenties,
     img1, img2, img3, img4, email, landlord_email,lat,lng
 ) VALUES
 (1,1, '3K', 'Chiang Rai', 'Mueang Chiang Rai', 3000, 'Unisex', false, 'Here are some descriptions', 'Here are some rules', 'We provide these amenities', '3K1.JPG', '3K2.JPG', '3K3.JPG', '3K4.JPG', 'dormitoryA@example.com', 'landlord1@example.com',19.90885594661509, 99.855986253231),
