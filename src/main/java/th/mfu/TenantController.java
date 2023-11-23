@@ -105,13 +105,11 @@ public class TenantController {
             if(pwEncoder.matches(password, temp.getPassword()))   
                 {
                     isLogged.put(email, true);
-                    if (rememberMe) {
-                        Cookie cookie = new Cookie("email", email);
-                        cookie.setPath("/");
-                        cookie.setMaxAge(3600*24);
-                        response.addCookie(cookie);
-                    }
-                    
+                    Cookie cookie = new Cookie("email", email);
+                    cookie.setPath("/");
+                    cookie.setMaxAge(3600*24);
+                    response.addCookie(cookie);
+                   
                     return "redirect:/homepage";
                 }
             else{
