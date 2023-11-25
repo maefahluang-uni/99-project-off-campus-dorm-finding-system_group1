@@ -15,8 +15,8 @@
         <!-- sub1 -->
        <div class="sub1">
            <div class="title">
-               <h1>ComfyNest</h1>
-               <h4>Your Key to Hassle-Free Dormitory Discovery</h4>
+               <h1 id="animatedText"></h1>
+               <h4 id="AnimatedText"></h4>
            </div>
        </div>
        <!-- sub2 -->
@@ -83,6 +83,59 @@
        </div>
     </div>
     <!-- JS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get the text content
+            var originalText = "ComfyNest";
+            var animatedText = document.getElementById('animatedText');
+    
+            // Split the text into an array of letters
+            var letters = originalText.split('');
+    
+            // Create a function to animate the text
+            function animateText(index) {
+                // Set the content of the element
+                animatedText.textContent = letters.slice(0, index).join('');
+    
+                // Check if there are more letters to display
+                if (index < letters.length) {
+                    // Increment the index and set a timeout to call the function again
+                    index++;
+                    setTimeout(function () {
+                        animateText(index);
+                    },100); // Adjust the delay (in milliseconds) between letters
+                } else {
+                    // Call the second animation after the first one completes
+                    animateTextTwo(0);
+                }
+            }
+    
+            // Start the first animation when the page loads
+            animateText(0);
+    
+            // Function for the second animation
+            function animateTextTwo(index) {
+                // Get the text content for the second animation
+                var originalTextTwo = "Your key to Hassle-Free Dormitory Discovery";
+                var animatedTextTwo = document.getElementById('AnimatedText');
+    
+                // Split the text into an array of letters
+                var lettersTwo = originalTextTwo.split('');
+    
+                // Set the content of the element
+                animatedTextTwo.textContent = lettersTwo.slice(0, index).join('');
+    
+                // Check if there are more letters to display
+                if (index < lettersTwo.length) {
+                    // Increment the index and set a timeout to call the function again
+                    index++;
+                    setTimeout(function () {
+                        animateTextTwo(index);
+                    }, 50); // Adjust the delay (in milliseconds) between letters
+                }
+            }
+        });
+    </script>
     <script src="/static/js/index.js"></script>
 </body>
 </html>

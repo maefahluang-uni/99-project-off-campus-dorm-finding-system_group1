@@ -13,9 +13,3 @@ eye.addEventListener("click", () => {
         password.type = "password";
     }
 })
-
-const form = document.querySelector("form"),
-    emailField = form.querySelector(".email-field"),
-    emailInput = emailField.querySelector(".email")
-
-
