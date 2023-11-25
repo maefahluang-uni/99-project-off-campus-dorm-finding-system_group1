@@ -157,6 +157,7 @@ body{
 .wrapper form .pass input:focus{
     box-shadow: inset 0px 0px 2px 2px rgb(237, 233, 233);
 }
+/*customize checkbox*/
 input[type="checkbox"] {
     appearance: none; /* Removes default styles (may not work in all browsers) */
     -webkit-appearance: none; /* For older WebKit-based browsers */

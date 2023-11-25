@@ -1,170 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Home Page | ComfyNest</title>
-<link rel="stylesheet" href="/static/css/HomePage.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page | ComfyNest</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="/static/css/HomePage.css">
+    <!-- font-awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-<section>
-<span class="overlay1"></span>
-<div class="pop1">
-<div class="question">
-<img src="/static/images/Confirm.png" alt="">
-</div>
-<h2>Are you sure you want to book this dormitory?</h2>
-<div class="btns">
-<button class="cancel1">Cancel</button>
-<button class="booking">Book</button>
-</div>
-</div>
-<div class="container">
-<div class="header" >
-<div class="logo">
-<a href="/homepage">C<i class='bx bxs-home-circle'></i>mfyNest</a>
-</div>
-<div class="btn">
-<a href="/wishlist">
-<i class='bx bxs-heart' ></i>
-</a>
-<a href="/userDetail">
-<img src="/static/images/profilePicture.png" alt="">
-</a>
-</div>
-</div>
-<div class="body">
-
-<div class="searchbar">
-<form th:action="@{/search}" method="post" class="bar" id="searchForm">
-    
-        <input type="text" name="dormitoryName" placeholder="Dormitory's name" autocomplete="off">
-        <input type="submit" value="Search" class="searchbtn">
-    
-
-
-</form>
-<div style="margin-bottom: 30px;">
-<div class="title" align="center" style="font-size: 20px; color: #6f4518;">Search By City</div>
-</div>
-<div class="city">
-<div class="btns" th:each="city : ${cityList}">
-<a th:href="@{'/city/'+${city.getCity()}}"><button><span th:text="${city.getCity()}"></span></button></a>
-
-</div>
-</div>
-</div>
-<div class="dorms" th:each="dorm : ${dormList}">
-
-<div class="stk">
-<div class="image">
-<img th:src="@{'/static/images/'+${dorm.img1}}" alt="">
-</div>
-<div class="info">
-<div class="dormName">
-<div class="name">
-<h3 style="font-weight: 300; font-size: 22px;" th:text="${dorm.name}">STK Resort</h3>
-<!-- <a th:href="@{'/addfav'+${dorm.id}}"><i id="heartIcon" class='bx bx-heart show-hide' ></i></a> -->
-</div>
-<div class="rating"  th:with="maxStars=5,rating=${dorm.rating.calcRating()}, fullStars=${#numbers.sequence(1, rating)}">
-    <div class="stars">
-        <span th:if="${rating>0}" th:each="star : ${fullStars}" class="star"><i class="fa-solid fa-star"></i></span>
-        <span th:unless="${rating>=5}">
-            <span th:each="star : ${#numbers.sequence(rating + 1, maxStars)}"><i class="fa-regular fa-star"></i></span>
-        </span>
-        
-        
-    </div>
-    <div class="aval">
-        <span th:if="${dorm.fullyBooked==true}" class="aval">
-            Full
-        </span>
-        <span th:if="${dorm.fullyBooked== false }" class="aval">
-            Available
-        </span  >
-    </div>
-    
-<!-- <div class="aval">
-    <span th:if="${dorm.fullyBooked}" class="aval">
-        Full
-    </span>
-    <span th:if="${dorm.fullyBooked= false }" class="aval">
-        Available
-    </span  >
-</div> -->
-</div>
-</div>
-<div class="detail">
-<ul class="row">
-<li><i class='bx bx-money'></i> ฿<span th:text="${dorm.price}"></span>/month</li>
-<li><i class='bx bx-male-female'></i><span th:text="${dorm.gender}"></span></li>
-<li><i class='bx bxs-map'></i><span th:text="${dorm.city}"></span></li>
-<li><i class='bx bxs-phone' ></i><span th:text="${dorm.landlord.telephone}"></span></li>
-<li><i class='bx bxs-envelope' ></i><span th:text="${dorm.email}"></span></li>
-</ul>
-</div>
-<div class="buttons">
-<a th:href="@{'/dorm/'+${dorm.id}}"><button class="see" >See More</button></a>
-<button class="book">Book</button>
-</div>
-</div>
-</div>
-
-
-</div>
-<div class="footer">
-    <div class="contact">
-    <div class="member">
-    <h3>CONTACT</h3>
-    <ul class="list">
-    <li>Group One</li>
-    <li>091479581</li>
-    <li style="visibility: hidden;">Off-Campus Dormitory Finding System</li>
-    </ul>
-    </div>
-    <div class="gp">
-    <div class="member">
-    <h3>OUR TEAM</h3>
-    <ul class="list">
-    <li> KAUNG HTUT HLAING</li>
-    <li>KHUN SHINE SI THU</li>
-    <li>SWAN YI PHYO</li>
-    </ul>
-    </div>
-    <div class="member" style="margin-left: 20px;">
-    <h3 style="visibility: hidden;">OUR TEAM</h3>
-    <ul class="list">
-    <li>MYAT THU KYAW</li>
-    <li>SAI MYAT MIN HAN</li>
-    <li>KHANT MIN HTET</li>
-    </ul>
-    </div>
-    </div>
-</div>
-<div class="copyright">
-<ul class="list">
-<li>©2023 - Group One | All right reserved</li>
-<li>Mae Fah Luang University</li>
-</ul>
-</div>
-</div>
-
-</section>
-
-
-<script src="/static/js/heart.js"></script>
+    <section>
+        <!-- overlay and popup -->
+        <span class="overlay1"></span>
+        <div class="pop1">
+            <div class="question">
+                <img src="/static/images/Confirm.png" alt="">
+            </div>
+            <h2>Are you sure you want to book this dormitory?</h2>
+            <div class="btns">
+                <button class="cancel1">Cancel</button>
+                <button class="booking">Book</button>
+            </div>
+        </div>
+        <!-- container -->
+        <div class="container">
+            <!-- header -->
+            <div class="header">
+                <div class="logo">
+                    <a href="/homepage">C<i class='bx bxs-home-circle'></i>mfyNest</a>
+                </div>
+                <div class="btn">
+                    <a href="/wishlist">
+                        <i class='bx bxs-heart'></i>
+                    </a>
+                    <a href="/userDetail">
+                        <img src="/static/images/profilePicture.png" alt="">
+                    </a>
+                </div>
+            </div>
+            <!-- body -->
+            <div class="body">
+                <!-- searchbar -->
+                <div class="searchbar">
+                    <form th:action="@{/search}" method="post" class="bar" id="searchForm">
+                        <input type="text" name="dormitoryName" placeholder="Dormitory's name" autocomplete="off">
+                        <input type="submit" value="Search" class="searchbtn">
+                    </form>
+                    <div style="margin-bottom: 30px;">
+                        <div class="title" align="center" style="font-size: 20px; color: #6f4518;">Search By City</div>
+                    </div>
+                    <div class="city">
+                        <div class="btns" th:each="city : ${cityList}">
+                            <a th:href="@{'/city/'+${city.getCity()}}"><button><span th:text="${city.getCity()}"></span></button></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- dorms list -->
+                <div class="dorms" th:each="dorm : ${dormList}">
+                    <!-- dorm -->
+                    <div class="stk">
+                        <div class="image">
+                            <img th:src="@{'/static/images/'+${dorm.img1}}" alt="">
+                        </div>
+                        <div class="info">
+                            <div class="dormName">
+                                <div class="name">
+                                    <h3 style="font-weight: 300; font-size: 22px;" th:text="${dorm.name}">STK Resort</h3>
+                                    <!-- <a th:href="@{'/addfav'+${dorm.id}}"><i id="heartIcon" class='bx bx-heart show-hide' ></i></a> -->
+                                </div>
+                                <div class="rating" th:with="maxStars=5,rating=${dorm.rating.calcRating()}, fullStars=${#numbers.sequence(1, rating)}">
+                                    <div class="stars">
+                                        <span th:if="${rating>0}" th:each="star : ${fullStars}" class="star"><i class="fa-solid fa-star"></i></span>
+                                        <span th:unless="${rating>=5}">
+                                            <span th:each="star : ${#numbers.sequence(rating + 1, maxStars)}"><i class="fa-regular fa-star"></i></span>
+                                        </span>
+                                    </div>
+                                    <div class="aval">
+                                        <span th:if="${dorm.fullyBooked==true}" class="aval">Full</span>
+                                        <span th:if="${dorm.fullyBooked== false }" class="aval">Available</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="detail">
+                                <ul class="row">
+                                    <li><i class='bx bx-money'></i> ฿<span th:text="${dorm.price}"></span>/month</li>
+                                    <li><i class='bx bx-male-female'></i><span th:text="${dorm.gender}"></span></li>
+                                    <li><i class='bx bxs-map'></i><span th:text="${dorm.city}"></span></li>
+                                    <li><i class='bx bxs-phone' ></i><span th:text="${dorm.landlord.telephone}"></span></li>
+                                    <li><i class='bx bxs-envelope' ></i><span th:text="${dorm.email}"></span></li>
+                                </ul>
+                            </div>
+                            <div class="buttons">
+                                <a th:href="@{'/dorm/'+${dorm.id}}"><button class="see" >See More</button></a>
+                                <button class="book">Book</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- footer -->
+            <div class="footer">
+                <div class="contact">
+                    <div class="member">
+                        <h3>CONTACT</h3>
+                        <ul class="list">
+                            <li>Group One</li>
+                            <li>091479581</li>
+                            <li style="visibility: hidden;">Off-Campus Dormitory Finding System</li>
+                        </ul>
+                    </div>
+                    <div class="gp">
+                        <div class="member">
+                            <h3>OUR TEAM</h3>
+                            <ul class="list">
+                                <li> KAUNG HTUT HLAING</li>
+                                <li>KHUN SHINE SI THU</li>
+                                <li>SWAN YI PHYO</li>
+                            </ul>
+                        </div>
+                        <div class="member" style="margin-left: 20px;">
+                            <h3 style="visibility: hidden;">OUR TEAM</h3>
+                            <ul class="list">
+                                <li>MYAT THU KYAW</li>
+                                <li>SAI MYAT MIN HAN</li>
+                                <li>KHANT MIN HTET</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="copyright">
+                    <ul class="list">
+                        <li>©2023 - Group One | All right reserved</li>
+                        <li>Mae Fah Luang University</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- JS -->
+    <script src="/static/js/heart.js"></script>
 </body>
 </html>
-<!-- <i class='bx bx-search'></i> -->
-<!-- yay in searchbtn pyouk -->
-
-
-<!-- <i class="fa-regular fa-circle-arrow-up"></i> -->
-<!-- <i class="fa-regular fa-circle-arrow-down"></i> -->
-
-
-<!-- <i class='bx bxs-heart' ></i> -->
-

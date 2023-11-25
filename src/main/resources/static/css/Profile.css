@@ -14,6 +14,18 @@ body{
    justify-content: center;
    align-items: center;
 }
+/* bck key */
+.back{
+   position: fixed;
+   top: 1%;
+   left: 0.2%;
+}
+.back i{
+   font-size: 40px;
+   color: #a47145;
+}
+/* bck key end */
+/* container */
 .container{
    width: 546px;
    height: auto;
@@ -23,15 +35,6 @@ body{
    padding: 40px;
    justify-content: center;
    align-items: center;
-}
-.back{
-   position: fixed;
-   top: 1%;
-   left: 0.2%;
-}
-.back i{
-   font-size: 40px;
-   color: #a47145;
 }
 .container .pfp{
    width: 100%;
@@ -87,6 +90,7 @@ body{
 .container .info .value .row .sub{
    margin-bottom: 0px;
 }
+/* container end */
 
 
 
