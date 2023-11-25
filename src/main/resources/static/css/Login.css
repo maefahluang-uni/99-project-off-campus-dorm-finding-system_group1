@@ -49,11 +49,11 @@ body{
     box-shadow: 0px 4px 10px 1px rgb(148, 147, 147);
 }
 .wrapper form{
-    padding: 60px 25px 40px 25px;
+    padding: 50px 25px 30px 25px;
 }
 .wrapper .above{
     font-size: 24px;
-    font-weight: 400;
+    font-weight: 500;
     padding-left: 5px;
 }
 .wrapper .below{
@@ -97,7 +97,7 @@ body{
 .wrapper form .row input.error {
     border-color: red;
 }
-.wrapper form .check{
+/* .wrapper form .check{
     display: flex;
     justify-content: start;
     align-items: center;
@@ -114,10 +114,10 @@ body{
 .wrapper form .forget{
     margin-top: 10px;
     text-align: center;
-}
+} */
 .wrapper form .signup-link{
     text-align: center;
-    font-size: 17px;
+    font-size: 16px;
     margin-top: 15px;
 }
 .wrapper form .signup-link a{
@@ -142,7 +142,7 @@ body{
 .wrapper form .pass{
     position: relative;
     height: 45px;
-    margin-bottom: 30px;
+    margin-bottom: 45px;
 }
 .wrapper form .pass input{
     font-size: 16px;
