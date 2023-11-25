@@ -263,6 +263,10 @@ public class TenantController {
         dorms= (ArrayList<Dormitory>) dormRepo.findAll();
         model.addAttribute("dormList", dorms);
         model.addAttribute("cityList", City.values());
+        if(dorms.isEmpty())
+            model.addAttribute("empty",true);
+        else
+            model.addAttribute("empty",false);
         return"HomePage";
     }
     @GetMapping("/logout")
@@ -277,7 +281,7 @@ public class TenantController {
         return "Login";
     }
     @GetMapping("/city/{city}")
-    public String searchByProvince(@PathVariable String city,Model model,@CookieValue(name="email",defaultValue = "none") String cookieValue)
+    public String searchByProvince(@PathVariable String city,Model model,@CookieValue(name="email",defaultValue = "none") String cookieValue,RedirectAttributes re)
     {
          if(!isLoggedIn(cookieValue))
             return "redirect:/";
@@ -285,6 +289,10 @@ public class TenantController {
         ArrayList<Dormitory> dorms = dormRepo.findByCity(city);
         model.addAttribute("dormList", dorms);
         model.addAttribute("cityList", City.values());
+         if(dorms.isEmpty())
+            model.addAttribute("empty",true);
+        else
+            model.addAttribute("empty",false);
         return"HomePage";
     }
     @PostMapping("/search")
@@ -295,6 +303,10 @@ public class TenantController {
         ArrayList<Dormitory> dorms = dormRepo.findByNameIgnoreCaseContaining(dormitoryName.trim());
         model.addAttribute("dormList", dorms);
         model.addAttribute("cityList", City.values());
+         if(dorms.isEmpty())
+            model.addAttribute("empty",true);
+        else
+            model.addAttribute("empty",false);
         return"HomePage";
     }
     @Transactional
