@@ -60,8 +60,9 @@
                     </div>
                 </div>
                 <!-- dorms list -->
-                <span th:if="${empty}">
+                <span th:if="${empty}" class="empty">
                     <img th:src="@{/static/images/empty.png}" alt="">
+                    <h4>Comming Soon</h4>
                 </span>
                 <div class="dorms" th:each="dorm : ${dormList}">
                     <!-- dorm -->

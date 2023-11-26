@@ -96,11 +96,9 @@ public class TenantController {
     public String validate(@RequestParam String email, @RequestParam String password,RedirectAttributes re,@RequestParam(value = "rememberMe", defaultValue = "false") boolean rememberMe,
                             HttpSession session, HttpServletResponse response,@CookieValue(name="email",defaultValue = "none") String cookieValue)
     {
-        
         Tenant temp;
         try
         {
-            
             temp = tenantRepository.findById(email).get();
             if(pwEncoder.matches(password, temp.getPassword()))   
                 {
@@ -109,7 +107,6 @@ public class TenantController {
                     cookie.setPath("/");
                     cookie.setMaxAge(3600*24);
                     response.addCookie(cookie);
-                   
                     return "redirect:/homepage";
                 }
             else{
@@ -121,9 +118,7 @@ public class TenantController {
             re.addFlashAttribute("error", true);
             return "redirect:/";
         }
-        
     }
-
     @GetMapping("/register")
     public String goToReg()
     {
@@ -142,7 +137,6 @@ public class TenantController {
     @CookieValue(name="email",defaultValue = "none") String cookieValue) 
     {
         //TODO: store the user data in the database
-        
         if(tenantRepository.findById(email).isPresent())
         {
             re.addFlashAttribute("error", true);
@@ -167,7 +161,6 @@ public class TenantController {
    @GetMapping("/home")
    public String home(Model model,HttpSession session,@CookieValue(name="email",defaultValue = "none") String cookieValue)
    {
-        
         model.addAttribute("error", true);
         model.addAttribute("tenants", tenantRepository.findById(cookieValue).get());
         model.addAttribute("hasSession", "false");
@@ -204,7 +197,7 @@ public class TenantController {
     @GetMapping("/wishlist")
     public String wishlist(Model model,@CookieValue(name="email",defaultValue = "none") String cookieValue)
     {
-         if(!isLoggedIn(cookieValue))
+        if(!isLoggedIn(cookieValue))
             return "redirect:/";
         ArrayList<Dormitory> dorms = new ArrayList<>();
         for (WishList item : wishListRepository.findByTenant(tenantRepository.findById(cookieValue).get())) {
@@ -220,7 +213,7 @@ public class TenantController {
     @GetMapping("/add/{id}")
     public String addToWishList(@PathVariable int id,@CookieValue(name="email",defaultValue = "none") String cookieValue)
     {
-         if(!isLoggedIn(cookieValue))
+        if(!isLoggedIn(cookieValue))
             return "redirect:/";
 
         String path = "/dorm/"+id;
@@ -240,7 +233,7 @@ public class TenantController {
     @Transactional
     public String removeItem(@CookieValue(name="email",defaultValue = "none") String cookieValue,@PathVariable int id, HttpServletRequest request)
     {
-         if(!isLoggedIn(cookieValue))
+        if(!isLoggedIn(cookieValue))
             return "redirect:/";
         String referer = request.getHeader("Referer");
         Dormitory dorm = dormRepo.findById(id).get();
@@ -257,7 +250,7 @@ public class TenantController {
     @GetMapping("/homepage")
     public String homePage(Model model,@CookieValue(name="email",defaultValue = "none") String cookieValue)
     {
-         if(!isLoggedIn(cookieValue))
+        if(!isLoggedIn(cookieValue))
             return "redirect:/";
         ArrayList<Dormitory> dorms = new ArrayList<>();
         dorms= (ArrayList<Dormitory>) dormRepo.findAll();
@@ -272,7 +265,6 @@ public class TenantController {
     @GetMapping("/logout")
     public String logout(HttpServletResponse response,@CookieValue(name="email",defaultValue = "none") String cookieValue)
     {
-        
         isLogged.put(cookieValue, false);
         Cookie cookie = new Cookie("email", "");
         cookie.setPath("/");

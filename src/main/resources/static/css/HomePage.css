@@ -241,6 +241,28 @@ section.popup .pop1{
 }
 /* searchbar end */
 /* dorms list*/
+.body .empty{
+    width: 400px;
+    height: 330px;
+    display: flex;
+    flex-direction: column;
+    padding: 80px 110px;
+    margin-top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+}
+.body .empty img{
+    width: 100%;
+    height: 100%;
+}
+.body .empty h4{
+    margin-top: 15px;
+    text-align: center;
+    color: #6b7280;
+    font-size: 16px;
+    font-weight: 300;
+}
 .body .dorms{
     width: 100%;
     min-height: 310px;
@@ -263,7 +285,6 @@ section.popup .pop1{
     left: 50%;
     transform: translateX(-50%);
     position: absolute;
-    background-color: white;
 }
 .dorms .stk .image{
     width: 50%;
