@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import th.mfu.domain.Rating;
 
 public interface RatingRepository extends CrudRepository<Rating, Integer> {
+    //for increasing the star count when someone rated
     @Modifying
     @Query("UPDATE Rating r SET r.OneCount = r.OneCount + 1 WHERE r.id = :ratingId")
     void increaseOneCountById(int ratingId);
