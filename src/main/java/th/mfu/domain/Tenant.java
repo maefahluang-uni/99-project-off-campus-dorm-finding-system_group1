@@ -13,8 +13,7 @@ public class Tenant{
     private String phone;
     private String password;
 
-    //relationship
-
+    //constructors and getters and setters
     public Tenant(){
 
     }

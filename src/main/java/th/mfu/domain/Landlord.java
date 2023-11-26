@@ -15,6 +15,7 @@ public class Landlord
     {
 
     }
+    //constructors and getters and setters
     public Landlord(String email, String firstName, String lastName, String telephone) {
         this.email = email;
         this.firstName = firstName;

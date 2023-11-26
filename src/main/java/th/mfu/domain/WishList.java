@@ -18,6 +18,8 @@ public class WishList {
     private Tenant tenant;
     @ManyToOne
     private Dormitory dormitory;
+    
+    //constructors and getters and setters
     public WishList()
     {
 

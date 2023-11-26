@@ -142,14 +142,13 @@
                 </div><br>
                 <!-- buttons -->
                 <div class="btns">
-                    <div th:if="${isWished}" class="but">
-                     <a th:href="@{'/remove/'+${dorm.id}}"><button class="wish" >Remove from Wishlist</button></a>
-                     <button class="wish" id="rate">Rate This Dormitory  <i class="fa-solid fa-star"></i></button>
+                    <div  class="but">
+                     <a th:if="${isWished}" th:href="@{'/remove/'+${dorm.id}}"><button class="wish" >Remove from Wishlist</button></a>
+                     <a th:if="${isWished==false}"th:href="@{'/add/'+${dorm.id}}"><button class="wish" >Add to Wishlist</button></a>
+                     <button th:if="${alreadyRated==true}" class="wish" id="rate" disabled>You have already rated  <i class="fa-solid fa-star"></i></button>
+                     <button th:if="${alreadyRated==false}" class="wish" id="rate">Rate This Dormitory  <i class="fa-solid fa-star"></i></button>
                     </div>
-                    <div th:if="${isWished==false}" class="but">
-                        <a th:href="@{'/add/'+${dorm.id}}"><button class="wish">Add to Wishlist</button></a>
-                        <button class="wish" id="rate">Rate This Dormitory  <i class="fa-solid fa-star"></i></button>
-                    </div>
+                   
                     <div class="ton">
                         <button class="book" id="btn">Book</button>
                     </div>

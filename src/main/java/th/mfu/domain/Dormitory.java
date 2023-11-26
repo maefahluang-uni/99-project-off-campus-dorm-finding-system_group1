@@ -1,9 +1,5 @@
 package th.mfu.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.annotation.Generated;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -36,7 +32,7 @@ public class Dormitory {
     private double lat;
     private double lng;
 
-    
+    //Constructors and getters and setters
     public Dormitory(int id, Rating rating, String name, String location, String province, int price, String gender,
             boolean fullyBooked, String description, String rules, String amenties, String img1, String img2,
             String img3, String img4, String email, Landlord landlord,double lat,double lng) {

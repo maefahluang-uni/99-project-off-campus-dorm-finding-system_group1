@@ -19,7 +19,8 @@ public class Rating
     private int fourCount=0;
     private int fiveCount=0;
     private int zeroCount=0;
-
+    
+    //constructors and getters and setters
     public Rating(int id, int oneCount, int twoCount, int threeCount, int fourCount, int fiveCount, int zeroCount) {
         this.id = id;
         OneCount = oneCount;
@@ -90,6 +91,7 @@ public class Rating
     public void setZeroCount(int zeroCount) {
         this.zeroCount = zeroCount;
     }
+    //to dynamically calculate ratings
     public int calcRating()
     {
         int totalCount=OneCount+twoCount+threeCount+fourCount+fiveCount+zeroCount;

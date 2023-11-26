@@ -1,5 +1,5 @@
 package th.mfu.domain;
-
+//For the serach buttons in the homepage as well as more efficient and less error prone to make buttons
 public enum City {
     CHIANG_RAI("Chiang Rai"),
     CHIANG_MAI("Chiang Mai"),
