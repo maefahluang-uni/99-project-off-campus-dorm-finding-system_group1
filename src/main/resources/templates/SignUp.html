@@ -38,7 +38,7 @@
                            <input type="text" id="lN" name="lastName" required autocomplete="off" placeholder="Enter Your Last Name">
                        </div>
       
-                       <div class="row">
+                       <div class="row red">
                         <div style="display: flex; justify-content: space-between;"><label for="email">E-mail</label><span th:if="${error}" class="error" style="color: red; font-size: 10px;"> &#9432 This email is already registered!</span></div>
                            <input type="email" id="email" name="email" required novalidate autocomplete="off" placeholder="Enter Your Email" th:class="${error} ? 'error' : ''">
                        </div>
@@ -50,7 +50,7 @@
                                <option value="+66" selected>+66</option>
                                <option value="+08">+08</option>
                            </select>
-                           <input type="tel" id="phone" name="phone" required autocomplete="off" placeholder="Enter Your Phone Number">
+                           <input type="tel" id="phone" class="phone" name="phone" required autocomplete="off" placeholder="Enter Your Phone Number">
                        </div>
       
                        <div class="pass">
