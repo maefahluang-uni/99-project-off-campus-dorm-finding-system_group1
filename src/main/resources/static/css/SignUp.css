@@ -69,6 +69,9 @@ body{
    height: 45px;
    margin-bottom: 30px;
 }
+.wrapper form .red input.error {
+   border-color: red;
+}
 .wrapper form .phoneNumber{
    position: relative;
    height: 45px;
@@ -197,4 +200,3 @@ body{
    align-items: center;
    margin-left: 16px;
 }
-

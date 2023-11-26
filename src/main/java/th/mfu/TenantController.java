@@ -378,9 +378,9 @@ public class TenantController {
         try{
             if(isLogged.containsKey(email))
                 {if(isLogged.get(email))
-                        {
-                            return true;
-                        }
+                    {
+                        return true;
+                    }
                 }
             else
                 System.out.println("No logged in has been made");
